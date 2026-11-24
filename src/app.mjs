@@ -523,6 +523,9 @@ window.addEventListener('pagehide', () => {
 });
 prefs();
 renderBase();
+if (document.querySelector('meta[name="hadal-offline"], meta[name="hadal-portable"]')) {
+  id('portable-download').hidden = false;
+}
 if (document.querySelector('meta[name="hadal-offline"]') && 'serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(() => {
     /* The live game also works without a worker. */

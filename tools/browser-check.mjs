@@ -63,6 +63,13 @@ try {
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await context.setOffline(true);
     await page.reload();
+    const portableDownload = page.waitForEvent('download');
+    await page.locator('#portable-download').click();
+    const portableFile = await portableDownload;
+    assert.equal(portableFile.suggestedFilename(), 'hadal-survey.html');
+    const portableSource = await readFile(await portableFile.path(), 'utf8');
+    assert.match(portableSource, /<meta name="hadal-portable"/);
+    assert.match(portableSource, /<script type="importmap">/);
     await page.getByRole('button', { name: /进入实验台/ }).click();
     await page.locator('#sheet-body input, #sheet-body canvas').first().waitFor();
     await page.locator('#sheet-close').click();

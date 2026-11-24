@@ -590,6 +590,12 @@ html[data-motion='reduce'] {
   padding: 23px 0;
   margin-top: 25px;
 }
+.basefooter nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 18px;
+}
 .lab-entry h3 {
   font-size: 1.3rem;
   margin: 2px 0 5px;

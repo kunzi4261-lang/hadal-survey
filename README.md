@@ -2,7 +2,7 @@
 
 一张退役海底观测网还在整点发送回波。你将驾驶遥控潜水器从 186 米的蓝石陆架潜入 6,180 米的无月海沟，检查九处观测目标，找出最后一段信号是谁发来的。
 
-**[进入驾驶舱 ↗](https://kunzi4261-lang.github.io/hadal-survey/)** · 桌面与触屏浏览器均可游玩 · 进度自动保存在本机
+**[进入驾驶舱 ↗](https://kunzi4261-lang.github.io/hadal-survey/)** · [单文件离线版](https://kunzi4261-lang.github.io/hadal-survey/hadal-survey.html) · 桌面与触屏浏览器均可游玩
 
 *A browser-based deep-sea exploration game. Pilot an ROV through three underwater habitats, map sonar contacts, and piece together the story of a retired observatory.*
 
@@ -44,6 +44,8 @@
 
 ## 本地运行
 
+**直接双击游玩。** 在游戏页面底部点「下载离线版」，用现代桌面浏览器打开保存的 `hadal-survey.html`。封面、三个海区与船载仪器都在这一个文件里，第一次启动就可以断网。继续航次时请用同一浏览器打开同一位置的文件。换设备或移动文件前，可以从「设置与存档」导出备份。
+
 克隆仓库，在根目录启动静态服务器。Python 3 可直接提供开发预览，打开 [localhost:8000](http://localhost:8000/) 即可驾驶。
 
 ```sh
@@ -59,6 +61,8 @@ node --test
 node tools/build.mjs
 python -m http.server 8001 --directory dist
 ```
+
+只生成单文件版，运行 `node tools/portable.mjs`，产物为 `dist/hadal-survey.html`。
 
 持续集成使用 Node.js 24，还会用 Chrome 和 Playwright 验证两种屏幕宽度下的离线启动、驾驶、拍照和存档恢复。可以在已安装 Chrome 的电脑上运行同一套浏览器检查。[浏览器验收脚本](tools/browser-check.mjs)
 

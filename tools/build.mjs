@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { buildPortable } from './portable.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = path.join(root, 'dist');
@@ -28,6 +29,10 @@ for (const name of files) {
   await mkdir(path.dirname(target), { recursive: true });
   await writeFile(target, bytes);
 }
+await buildPortable();
+const portable = 'hadal-survey.html';
+files.push(portable);
+digest.update(portable + '\0').update(await readFile(path.join(out, portable)));
 const worker = await readFile(new URL('./worker.template.js', import.meta.url), 'utf8');
 const version = digest.update(worker).digest('hex').slice(0, 16);
 await writeFile(
