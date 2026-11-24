@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "深蓝回声 · HADAL SURVEY",
+  "short_name": "深蓝回声",
+  "description": "驾驶探测器，探索三片深海海域，带回你的科考档案。",
+  "start_url": "./",
+  "scope": "./",
+  "lang": "zh-CN",
+  "display": "standalone",
+  "background_color": "#08171c",
+  "theme_color": "#08171d",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

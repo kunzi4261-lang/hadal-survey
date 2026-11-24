@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08171d" />
+    <meta
+      name="description"
+      content="深蓝回声，一款可在浏览器里驾驶 ROV 的原创 3D 深海科考游戏。用声呐定位目标，拍摄海床，完成三次连续潜航。"
+    />
+    <title>深蓝回声 · HADAL SURVEY</title>
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="src/base.css" />
+    <link rel="stylesheet" href="src/cockpit.css" />
+    <link rel="stylesheet" href="src/replay.css" />
+    <link rel="stylesheet" href="src/lab.css" />
+    <script type="module" src="src/app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#stations">跳到任务选择</a>
+    <div id="base">
+      <header class="mast">
+        <a class="brand" href="#home" aria-label="深蓝回声首页"
+          ><img src="assets/mark.svg" width="30" height="30" alt="" /><b>HADAL SURVEY</b></a
+        >
+        <nav aria-label="主导航">
+          <a href="#stations">任务甲板</a
+          ><button id="journal-open" type="button">科考档案 <span id="archive-count">00</span></button
+          ><button id="settings-open" aria-label="打开设置" title="设置">
+            <span aria-hidden="true">☷</span>
+          </button>
+        </nav>
+      </header>
+      <main id="home">
+        <section class="hero" aria-labelledby="title">
+          <div class="heroin">
+            <div class="kicker"><i></i> 深海科考航次</div>
+            <h1 id="title" lang="en">HADAL<br />SURVEY<span>.</span></h1>
+            <h2>深蓝回声</h2>
+            <p>驾驶遥控探测器，沿着一组失落的声信标，<br />从陆架一路下潜到海沟。</p>
+            <div class="herobuttons">
+              <button class="launch" id="hero-launch">开始下潜 <b aria-hidden="true">↗</b></button
+              ><a href="#stations">查看海域 <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div class="depthline" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </section>
+        <section id="stations" class="deck">
+          <div class="sectionhead">
+            <div>
+              <span class="eyeline">DIVE OPERATIONS</span>
+              <h2>任务甲板</h2>
+            </div>
+            <p id="progress"></p>
+          </div>
+          <div id="zone-cards" class="cards"></div>
+          <div class="deckfoot">
+            <span>航次进度自动保存在本机</span
+            ><button type="button" id="journal-foot">
+              查看科考档案 <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="lab-entry">
+            <div>
+              <span class="eyeline">SIGNAL LAB</span>
+              <h3>船载实验台</h3>
+              <p>打开一份合成观测数据，亲手从噪声里读出信号。</p>
+            </div>
+            <button id="lab-open" class="outline" type="button">进入实验台 ↗</button>
+          </div>
+        </section>
+      </main>
+      <footer class="basefooter">
+        <span>HADAL SURVEY <i>/</i> 深蓝回声</span
+        ><a href="https://github.com/kunzi4261-lang/hadal-survey">项目源码 ↗</a>
+      </footer>
+    </div>
+    <main id="cockpit" hidden aria-label="潜航驾驶舱"></main>
+    <dialog id="sheet">
+      <div class="dialoghead">
+        <div>
+          <span id="dialog-kicker" class="eyeline"></span>
+          <h2 id="dialog-title"></h2>
+        </div>
+        <button class="close" aria-label="关闭窗口" id="sheet-close">×</button>
+      </div>
+      <div id="sheet-body"></div>
+      <p id="dialog-notice" role="status" aria-live="polite"></p>
+    </dialog>
+    <p id="notice" role="status" aria-live="polite"></p>
+    <noscript>请开启 JavaScript 以启动潜航模拟器。</noscript>
+  </body>
+</html>
